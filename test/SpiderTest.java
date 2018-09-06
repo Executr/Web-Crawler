@@ -18,9 +18,9 @@ class SpiderTest {
 
 	@Test
 	void testVisit() {
-		String url = "http://www.qtafsir.com/";
-		String searchWord = "Yusuf";
-		spider.visit(url, searchWord);		
+		String url = "https://www.version2.dk/";
+		String searcString = "software";
+		spider.visit(url, searcString);		
 	}
 
 	//	@Test
@@ -31,26 +31,26 @@ class SpiderTest {
 
 	@Test
 	void testCrawlUrl() {
-		String url = "http://www.qtafsir.com/";
+		String url = "https://www.version2.dk/";
 		Document document = spider.crawlUrl(url);
 		assertNotNull(document);
 	}
 
 	@Test
 	void testSearchForWord() {
-		String url = "http://www.qtafsir.com/";
+		String url = "https://www.version2.dk/";
 		Document document = spider.crawlUrl(url);
-		String searchWord = "Yusuf";
-		boolean isFound = spider.searchForWord(document, searchWord);
+		String searcString = "software";
+		boolean isFound = spider.searchForWord(document, searcString);
 		assertTrue(isFound);
 	}
 
 	@Test
 	void testGetLinks() {
-		String url = "http://www.qtafsir.com/";
+		String url = "https://www.version2.dk/";
 		Document document = spider.crawlUrl(url);
-		String searchWord = "Yusuf";
-		spider.searchForWord(document, searchWord);
+		String searcString = "software";
+		spider.searchForWord(document, searcString);
 		List<String> links = spider.getLinks();
 		assertNotNull(links);
 	}

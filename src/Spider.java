@@ -26,7 +26,7 @@ public class Spider {
 	private List<String> links = new LinkedList<String>();
 
 	// Fields
-	private static int limitPages = 100; // Limit how many pages to visit
+	private static int limitPages = 250; // Limit how many pages to visit
 	private List<String> visitPages = new LinkedList<String>(); // pages not yet visited
 	private Set<String> visitedPages = new HashSet<String>(); // Pages already visited
 	private Set<String> pagesWithSearchString = new HashSet<String>(); // Pages containing search string
@@ -60,8 +60,7 @@ public class Spider {
 		}
 		System.out.println("\n\n Done. \n Found a total of " + this.visitPages.size() + " pages.");
 		System.out.println("Visited a total of : " + this.visitedPages.size() + " pages");
-		System.out.println(
-				"Found a total of : " + this.pagesWithSearchString.size() + " pages where search string occurs.");
+		System.out.println("Found a total of : " + this.pagesWithSearchString.size() + " pages where search string occurs.");
 	}
 
 	// Returns next unvisited URL
@@ -99,8 +98,9 @@ public class Spider {
 
 			}
 			// All hyperlink references (excluding specified hrefs)
-			Elements findAllLinks = document.select("a[href]").not("a[href*=olark.com]").not("a[href*=twitter.com]")
-					.not("a[href*=recitequran.com]").not("a[href*=google.com]");
+			Elements findAllLinks = document.select("a[href]").not("a[href*=google.dk]").not("a[href*=twitter.com]")
+					.not("a[href*=google.com]");
+			
 			for (Element element : findAllLinks) {
 				this.links.add(element.absUrl("href"));
 			}
